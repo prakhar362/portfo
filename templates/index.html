@@ -69,12 +69,33 @@
     </div>
   </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     type();
-     movingBackgroundImage();
-  });
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Call your functions
+        type();
+        movingBackgroundImage();
+
+        // Smooth scrolling
+        const links = document.querySelectorAll('a[href^="#"]');
+
+        for (const link of links) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+    });
 </script>
+
+
 
 
 <script type="text/javascript" src="./static/main.70a66962.js"></script></body>
